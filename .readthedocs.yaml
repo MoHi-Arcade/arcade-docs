@@ -10,3 +10,6 @@ build:
   tools:
     python: "3.13"
 
+sphinx:
+  # Path to your Sphinx configuration file.
+  configuration: docs/source/conf.py
