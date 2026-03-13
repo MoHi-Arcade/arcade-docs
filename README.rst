@@ -1,4 +1,2 @@
 Arcade Docs
 =======
-
-**Arcade Docs**
