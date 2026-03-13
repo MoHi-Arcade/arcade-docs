@@ -13,3 +13,6 @@ build:
 sphinx:
   # Path to your Sphinx configuration file.
   configuration: docs/source/conf.py
+python:
+  install:
+    - requirements: requirements.txt
