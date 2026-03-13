@@ -1,0 +1,212 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raspberry Pi SD Card Recovery &mdash; MHS Arcade 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Advanced" href="advanced/advanced.html" />
+    <link rel="prev" title="RetroPie" href="retropie.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            MHS Arcade
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="retropie.html">RetroPie</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Raspberry Pi SD Card Recovery</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#getting-into-a-root-shell">Getting into a Root Shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mounting-the-sd-card-on-another-system">Mounting the SD Card on Another System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#restoring-sudo">Restoring Sudo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="advanced/advanced.html">Advanced</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../scanner/scanner.html">Barcode Scanner [Deprecated]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whitepaper/whitepaper.html">Whitepaper</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MHS Arcade</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="retropie.html">RetroPie</a></li>
+      <li class="breadcrumb-item active">Raspberry Pi SD Card Recovery</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/retropie/safemode.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="raspberry-pi-sd-card-recovery">
+<h1>Raspberry Pi SD Card Recovery<a class="headerlink" href="#raspberry-pi-sd-card-recovery" title="Link to this heading"></a></h1>
+<p>This page explains how to recover a Raspberry Pi SD card when the user password is forgotten or <cite>sudo</cite> is broken.
+It covers booting into a root shell, mounting the SD card on another system, and restoring <cite>sudo</cite>.</p>
+<section id="getting-into-a-root-shell">
+<h2>Getting into a Root Shell<a class="headerlink" href="#getting-into-a-root-shell" title="Link to this heading"></a></h2>
+<p>If you forget the Pi password, you can boot into a root shell using the following method:</p>
+<ol class="arabic">
+<li><p>Power off the Raspberry Pi and remove the SD card.</p></li>
+<li><p>Insert the SD card into another computer.</p></li>
+<li><p>Open the <cite>boot</cite> partition and edit the <cite>cmdline.txt</cite> file.</p></li>
+<li><p>At the end of the single line in the file, append:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>init=/bin/sh
+</pre></div>
+</div>
+</li>
+<li><p>Safely eject the SD card and reinsert it into the Raspberry Pi.</p></li>
+<li><p>Boot the Pi. It will drop you into a root shell.</p></li>
+<li><p>Remount the root filesystem as writable:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mount<span class="w"> </span>-o<span class="w"> </span>remount,rw<span class="w"> </span>/
+</pre></div>
+</div>
+</li>
+<li><p>Reset your user password (replace <cite>pi</cite> with your username):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>passwd<span class="w"> </span>pi
+</pre></div>
+</div>
+</li>
+<li><p>After rebooting normally, remove the <cite>init=/bin/sh</cite> from <cite>cmdline.txt</cite>.</p></li>
+</ol>
+</section>
+<section id="mounting-the-sd-card-on-another-system">
+<h2>Mounting the SD Card on Another System<a class="headerlink" href="#mounting-the-sd-card-on-another-system" title="Link to this heading"></a></h2>
+<p>If you need to repair <cite>sudo</cite> from another machine:</p>
+<ol class="arabic">
+<li><p>Insert the SD card into a Linux machine.</p></li>
+<li><p>Identify the device:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>lsblk
+</pre></div>
+</div>
+<p>Typically <cite>/dev/sda1</cite> is the boot partition (FAT32) and <cite>/dev/sda2</cite> is the root filesystem (ext4).</p>
+</li>
+<li><p>Mount the root partition:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/mnt/pi-root
+sudo<span class="w"> </span>mount<span class="w"> </span>/dev/sda2<span class="w"> </span>/mnt/pi-root
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="restoring-sudo">
+<h2>Restoring Sudo<a class="headerlink" href="#restoring-sudo" title="Link to this heading"></a></h2>
+<p>To fix a broken <cite>sudo</cite>:</p>
+<ol class="arabic">
+<li><p>Ensure the <cite>/usr</cite> directory has correct ownership:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>root:root<span class="w"> </span>/mnt/pi-root/usr
+sudo<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>a+rX<span class="w"> </span>/mnt/pi-root/usr
+</pre></div>
+</div>
+</li>
+<li><p>Specifically fix the <cite>sudo</cite> binary:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>chown<span class="w"> </span>root:root<span class="w"> </span>/mnt/pi-root/usr/bin/sudo
+sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">4755</span><span class="w"> </span>/mnt/pi-root/usr/bin/sudo
+</pre></div>
+</div>
+</li>
+<li><p>Verify the permissions:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>-l<span class="w"> </span>/mnt/pi-root/usr/bin/sudo
+</pre></div>
+</div>
+<p>Correct output should resemble:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>-rwsr-xr-x 1 root root 165888 Jan 1 12:34 /mnt/pi-root/usr/bin/sudo
+</pre></div>
+</div>
+</li>
+<li><p>Sync and unmount the SD card:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sync
+sudo<span class="w"> </span>umount<span class="w"> </span>/mnt/pi-root
+sudo<span class="w"> </span>eject<span class="w"> </span>/dev/sda
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Never run <cite>chown</cite> or <cite>chmod</cite> on the boot partition (<cite>/dev/sda1</cite>) because FAT32 does not support Linux ownership/permissions.</p></li>
+<li><p>The setuid bit (<cite>s</cite>) on <cite>/usr/bin/sudo</cite> is critical; without it, <cite>sudo</cite> will not function.</p></li>
+<li><p>This procedure can also be used to fix other permission issues on <cite>/usr</cite> or <cite>sudo</cite> after filesystem corruption.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="retropie.html" class="btn btn-neutral float-left" title="RetroPie" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="advanced/advanced.html" class="btn btn-neutral float-right" title="Advanced" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Monarch High School.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,218 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Underscanning EmulationStation on RetroPie &mdash; MHS Arcade 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Barcode Scanner [Deprecated]" href="../../scanner/scanner.html" />
+    <link rel="prev" title="Advanced" href="advanced.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            MHS Arcade
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../retropie.html">RetroPie</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../safemode.html">Raspberry Pi SD Card Recovery</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="advanced.html">Advanced</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Underscanning EmulationStation on RetroPie</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#raspberry-pi-console-vs-emulationstation">Raspberry Pi Console vs EmulationStation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-1-editing-emulationstation-settings">Step 1: Editing EmulationStation Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-2-adjusting-framebuffer-optional">Step 2: Adjusting Framebuffer (Optional)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-3-testing-and-fine-tuning">Step 3: Testing and Fine-Tuning</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#notes">Notes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../scanner/scanner.html">Barcode Scanner [Deprecated]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../whitepaper/whitepaper.html">Whitepaper</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">MHS Arcade</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../retropie.html">RetroPie</a></li>
+          <li class="breadcrumb-item"><a href="advanced.html">Advanced</a></li>
+      <li class="breadcrumb-item active">Underscanning EmulationStation on RetroPie</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/retropie/advanced/changeborders.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="underscanning-emulationstation-on-retropie">
+<h1>Underscanning EmulationStation on RetroPie<a class="headerlink" href="#underscanning-emulationstation-on-retropie" title="Link to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>Many arcade cabinets using RetroPie have screens larger than the visible cabinet window. This can cause EmulationStation (ES) and games to be partially cut off due to overscan. This guide explains how to configure ES and the Raspberry Pi to underscan the display, ensuring the image fits properly inside the cabinet bezel.</p>
+</section>
+<section id="raspberry-pi-console-vs-emulationstation">
+<h2>Raspberry Pi Console vs EmulationStation<a class="headerlink" href="#raspberry-pi-console-vs-emulationstation" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Console (CLI)</strong>: Uses the framebuffer set in <cite>/boot/config.txt</cite>. Overscan adjustments here only affect the command line interface.</p></li>
+<li><p><strong>EmulationStation (ES)</strong>: Uses its own internal resolution and scaling settings. Adjustments here affect games and the ES UI.</p></li>
+</ul>
+</section>
+<section id="step-1-editing-emulationstation-settings">
+<h2>Step 1: Editing EmulationStation Settings<a class="headerlink" href="#step-1-editing-emulationstation-settings" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Open the ES settings file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>nano<span class="w"> </span>/opt/retropie/configs/all/emulationstation/es_settings.cfg
+</pre></div>
+</div>
+</li>
+<li><p>Locate the <cite>&lt;settings&gt;</cite> block. If it does not exist, create it:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;settings&gt;</span>
+<span class="nt">&lt;/settings&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Add or modify the following entries to define the visible screen area:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;Int</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ScreenWidth&quot;</span><span class="nt">&gt;</span>800<span class="nt">&lt;/Int&gt;</span>
+<span class="nt">&lt;Int</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ScreenHeight&quot;</span><span class="nt">&gt;</span>600<span class="nt">&lt;/Int&gt;</span>
+<span class="nt">&lt;Bool</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Fullscreen&quot;</span><span class="nt">&gt;</span>true<span class="nt">&lt;/Bool&gt;</span>
+<span class="nt">&lt;Int</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;ScreenRatio&quot;</span><span class="nt">&gt;</span>1<span class="nt">&lt;/Int&gt;</span><span class="w">  </span><span class="cm">&lt;!-- 1 = 4:3, 0 = auto --&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>ScreenWidth</strong> and <strong>ScreenHeight</strong> should match the visible window inside your cabinet bezel.</p></li>
+<li><p><strong>Fullscreen</strong> ensures ES covers the framebuffer.</p></li>
+<li><p><strong>ScreenRatio</strong> maintains a 4:3 aspect ratio for arcade games.</p></li>
+</ul>
+</li>
+<li><p>Save and exit (<cite>Ctrl+O</cite>, <cite>Enter</cite>, <cite>Ctrl+X</cite>) and restart ES:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>emulationstation
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="step-2-adjusting-framebuffer-optional">
+<h2>Step 2: Adjusting Framebuffer (Optional)<a class="headerlink" href="#step-2-adjusting-framebuffer-optional" title="Link to this heading"></a></h2>
+<p>For finer control, you can adjust the framebuffer in <cite>/boot/config.txt</cite>:</p>
+<ol class="arabic">
+<li><p>Edit the config file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>nano<span class="w"> </span>/boot/config.txt
+</pre></div>
+</div>
+</li>
+<li><p>Add or modify the framebuffer size:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>framebuffer_width=1024
+framebuffer_height=768
+</pre></div>
+</div>
+</li>
+<li><p>Save, exit, and reboot:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>reboot
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="step-3-testing-and-fine-tuning">
+<h2>Step 3: Testing and Fine-Tuning<a class="headerlink" href="#step-3-testing-and-fine-tuning" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Launch EmulationStation and check if the visible image fits the cabinet window.</p></li>
+<li><p>Adjust <cite>ScreenWidth</cite>, <cite>ScreenHeight</cite>, and optionally <cite>framebuffer_width</cite>/<cite>height</cite> in small increments until the display fits correctly.</p></li>
+<li><p>For 4:3 arcade content on widescreen monitors, ensure <cite>ScreenRatio=1</cite> to prevent stretching.</p></li>
+</ul>
+</section>
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Some RetroPie builds may still offer a “Screen Adjust” option in the ES UI (<cite>UI Settings</cite> → <cite>Screen Adjust</cite>), but this is not available on all versions. Manual config file edits are the most reliable method.</p></li>
+<li><p>Always back up <cite>es_settings.cfg</cite> before making changes.</p></li>
+</ul>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Official RetroPie Documentation: <a class="reference external" href="https://retropie.org.uk/docs/">https://retropie.org.uk/docs/</a></p></li>
+<li><p>Raspberry Pi Configuration: <a class="reference external" href="https://www.raspberrypi.com/documentation/computers/config_txt.html">https://www.raspberrypi.com/documentation/computers/config_txt.html</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="advanced.html" class="btn btn-neutral float-left" title="Advanced" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../scanner/scanner.html" class="btn btn-neutral float-right" title="Barcode Scanner [Deprecated]" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Monarch High School.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

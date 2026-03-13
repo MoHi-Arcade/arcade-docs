@@ -1,0 +1,183 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Barcode Scanner [Deprecated] &mdash; MHS Arcade 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Installation" href="installation.html" />
+    <link rel="prev" title="Underscanning EmulationStation on RetroPie" href="../retropie/advanced/changeborders.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            MHS Arcade
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../retropie/retropie.html">RetroPie</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Barcode Scanner [Deprecated]</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="file_structure.html">File Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="development.html">Development</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../whitepaper/whitepaper.html">Whitepaper</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MHS Arcade</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Barcode Scanner [Deprecated]</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/scanner/scanner.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="barcode-scanner-deprecated">
+<h1>Barcode Scanner [Deprecated]<a class="headerlink" href="#barcode-scanner-deprecated" title="Link to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>This documentation covers the setup, operation, and maintenance of the Raspberry Pi Barcode Scanning System.</p>
+<p>This system was built originally to control access and limit the amount of plays per person per day
+Due to a number of issues, it was never used outside of testing
+We don’t recommend using this feature due to iffy legality mumbo jumbo
+The barcode scanner system is connected to a raspberrypi 0wh2
+It runs raspberrypi lite and runs several custom python scripts
+The it works is when a barcode is scanned, it checks it against a whitelist and a list of special codes
+Then, if it doesn’t find a match in either of those, it will then check it against a regex, to see if it matches the format of a student ID
+If it does, then it’ll check it against the blacklist, if it does not match, it will check against the log to see how many time the student has played in the last day
+If it below the set threshold it will trigger a relay that triggers a coin to be entered in the RetroPie
+All interactions are logged including failed attempts,
+The other script running on the RaspberryPi is a simple Flask app that powers a web-board to let the user view the logs and edit the blacklist, whitelist, and special codes</p>
+<p>Contents:
+- <cite>installation</cite>
+- <cite>configuration</cite>
+- <cite>usage</cite>
+- <cite>file_structure</cite>
+- <cite>troubleshooting</cite>
+- <cite>development</cite></p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Pages</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#hardware-requirements">Hardware Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#software-requirements">Software Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html#installation-steps">Installation Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#whitelist-and-blacklist">Whitelist and Blacklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#other-configuration-files">Other Configuration Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#tips-for-maintaining-configurations">Tips for Maintaining Configurations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#starting-the-scanner">Starting the Scanner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#behavior">Behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#logging">Logging</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="file_structure.html">File Structure</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="file_structure.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#problem-whitelist-blacklist-not-loading">Problem: Whitelist/Blacklist Not Loading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#problem-scanner-input-not-detected">Problem: Scanner Input Not Detected</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#problem-logs-not-created">Problem: Logs Not Created</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="development.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="development.html#code-overview">Code Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development.html#adding-features">Adding Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="development.html#testing">Testing</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../retropie/advanced/changeborders.html" class="btn btn-neutral float-left" title="Underscanning EmulationStation on RetroPie" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="installation.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Monarch High School.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

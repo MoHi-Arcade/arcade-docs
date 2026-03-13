@@ -1,0 +1,145 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RetroPie &mdash; MHS Arcade 1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=f2a433a1"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Raspberry Pi SD Card Recovery" href="safemode.html" />
+    <link rel="prev" title="MHS Arcade documentation" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            MHS Arcade
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">RetroPie</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="safemode.html">Raspberry Pi SD Card Recovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="advanced/advanced.html">Advanced</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../scanner/scanner.html">Barcode Scanner [Deprecated]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whitepaper/whitepaper.html">Whitepaper</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">MHS Arcade</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">RetroPie</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/retropie/retropie.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="retropie">
+<h1>RetroPie<a class="headerlink" href="#retropie" title="Link to this heading"></a></h1>
+<p>RetroPie is the operating system that powers the arcade machine and playing games on it
+It is ran on a raspberrypi 3b, and is connected to the main monitor along with the usb encoders for both player inputs
+RetroPie has a lot of details so you can read about those here
+Because retropie runs on a raspberrypi it is very easy to corrupt, for that reason there are backups stored
+They are stored using Win32DiscImager
+If you want to put new games on. Don’t, it is a hell you do not want to enter
+It took two weeks to figure out how to get new games, we optimized the process, but only one person knows it
+Read more in the adding games section
+RetroPie is a linux based system, so all linux commands apply
+The RetroPie is connected to a usb hub behind the access panel for the ability to connect a usb keyboard and run commands
+The RetroPie is connected to the network through the main router, you can also access it remotely through TailScale
+For more details on TailScale connectivity, see the TailScale section
+All passwords and access information is in the protected document</p>
+<p><strong>hello world</strong></p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="safemode.html">Raspberry Pi SD Card Recovery</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="safemode.html#getting-into-a-root-shell">Getting into a Root Shell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="safemode.html#mounting-the-sd-card-on-another-system">Mounting the SD Card on Another System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="safemode.html#restoring-sudo">Restoring Sudo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="safemode.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="advanced/advanced.html">Advanced</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="advanced/changeborders.html">Underscanning EmulationStation on RetroPie</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="MHS Arcade documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="safemode.html" class="btn btn-neutral float-right" title="Raspberry Pi SD Card Recovery" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Monarch High School.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
