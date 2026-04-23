@@ -15,3 +15,6 @@ MHS Arcade documentation
    retropie/retropie
    scanner/scanner
    whitepaper/whitepaper
+   access
+   buttonpanel
+   networking_arcade

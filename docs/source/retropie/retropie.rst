@@ -20,13 +20,6 @@ For more details on TailScale connectivity, see the TailScale section
 All passwords and access information is in the protected document
 
 
-
-
-
-
-
-**hello world**
-
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
