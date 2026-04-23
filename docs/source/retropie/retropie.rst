@@ -33,3 +33,10 @@ All passwords and access information is in the protected document
 
    safemode
    advanced/advanced
+   games_management
+   keybinds
+   kiosk_mode
+   network_access
+   restart_and_control
+   trackball
+   web_interface
